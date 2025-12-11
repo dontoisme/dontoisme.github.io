@@ -1,0 +1,18 @@
+title: Don Hogan
+description: Technical Product Manager
+author: Don Hogan
+email: don.r.hogan@gmail.com
+
+# Social links (add/remove as needed)
+github_username: dontoisme
+linkedin_username: donhogan
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE
