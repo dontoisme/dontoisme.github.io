@@ -14,7 +14,7 @@ I bridge the gap between technical teams and business goals, turning ideas into 
 ## Projects
 
 ### [Darwin](https://github.com/dontoisme/darwin)
-A visual regression testing tool for iOS apps, designed for AI-assisted development. Git-aware screenshot capture, interactive timeline viewer, and pixel-level diffs. [Read the blog post](/ios/tools/ai/2025/12/27/darwin-your-ais-eyes-on-the-build.html).
+A visual regression testing tool for iOS apps, designed for AI-assisted development. Git-aware screenshot capture, interactive timeline viewer, and pixel-level diffs. [Read the blog post](/ios/tools/ai/2025/12/27/darwin-your-ais-eyes-on-the-build.html). | [Prompt to Install](/ai/developer-tools/ux/2025/12/27/prompt-to-install-the-new-developer-tool-ux.html)
 
 ### [Ark B Writings](/ark-b-writings/)
 My personal blog where I write about technology, product management, and whatever catches my interest.
