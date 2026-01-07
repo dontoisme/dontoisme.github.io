@@ -1,0 +1,76 @@
+---
+---
+
+@import "minima";
+
+// Lightweight UX enhancements - no external dependencies
+
+// Improved readability
+body {
+  line-height: 1.7;
+}
+
+// Stronger visual hierarchy for headings
+h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+h3 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+// Project cards - subtle emphasis
+h3 + p strong {
+  color: #555;
+  font-size: 0.95em;
+}
+
+// Better link colors (accessible contrast)
+a {
+  color: #0066cc;
+
+  &:visited {
+    color: #551a8b;
+  }
+
+  &:hover {
+    color: #004499;
+  }
+}
+
+// Emphasis for role/impact lines
+p em {
+  color: #666;
+  font-style: normal;
+  font-size: 0.92em;
+}
+
+// CTA section styling
+h2 + p:last-of-type {
+  font-size: 1.05em;
+}
+
+// Horizontal rules - lighter weight
+hr {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin: 2rem 0;
+}
+
+// Mobile optimization (already good with Minima, minor tweaks)
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.15em;
+  }
+}

@@ -5,30 +5,37 @@ title: Home
 
 # Hi, I'm Don Hogan
 
-**Technical Product Manager** with a passion for solving complex problems and building products that matter.
+**Technical Product Manager** — I turn complex iOS and AI engineering into shipped products.
 
-I bridge the gap between technical teams and business goals, turning ideas into shipped products. When I'm not managing roadmaps, I'm tinkering with side projects and writing about what I learn.
+I bridge technical teams and business goals with a builder's mindset. I've designed developer tools, built AI-assisted workflows, and written the code to back it up.
 
 ---
 
 ## Projects
 
 ### [Darwin](https://github.com/dontoisme/darwin)
-A visual regression testing tool for iOS apps, designed for AI-assisted development. Git-aware screenshot capture, interactive timeline viewer, and pixel-level diffs. [Read the blog post](/ios/tools/ai/2025/12/27/darwin-your-ais-eyes-on-the-build.html). | [Prompt to Install](/ai/developer-tools/ux/2025/12/27/prompt-to-install-the-new-developer-tool-ux.html)
-
-### [Ark B Writings](/ark-b-writings/)
-My personal blog where I write about technology, product management, and whatever catches my interest.
+**Visual regression testing for iOS + AI workflows**
+*Built:* Git-aware screenshot capture, interactive timeline viewer, pixel-level diffs
+*Impact:* Catches UI regressions before PR merge — gives AI assistants "eyes" on the build
+[Read the blog post](/ios/tools/ai/2025/12/27/darwin-your-ais-eyes-on-the-build.html) | [Prompt to Install](/ai/developer-tools/ux/2025/12/27/prompt-to-install-the-new-developer-tool-ux.html)
 
 ### [Gmail Quick Filter](https://github.com/dontoisme/Gmail-Quick-Filter)
-A Chrome extension that adds a quick filter button and hotkey to Gmail, making email triage faster.
+**Chrome extension for faster email triage**
+*Built:* Quick filter button + keyboard hotkey for Gmail
+*Impact:* Streamlines daily email workflow with one-click filtering
 
 ### [Squabble](https://github.com/dontoisme/Squabble)
-A player for DRM-free audiobooks. (Fork contribution)
+**DRM-free audiobook player**
+*Contribution:* Fork with community improvements for offline listening
+
+### [Ark B Writings](/ark-b-writings/)
+**My blog on technology and product management**
+Recent: AI-assisted development, developer tool UX, building in public
 
 ---
 
-## Get in Touch
+## Let's Connect
 
-- [GitHub](https://github.com/dontoisme)
-- [LinkedIn](https://linkedin.com/in/donhogan)
-- [Blog](/ark-b-writings/)
+Interested in working together on iOS, AI tooling, or developer experience?
+
+Connect on **[LinkedIn](https://linkedin.com/in/donhogan)** | **[GitHub](https://github.com/dontoisme)**
