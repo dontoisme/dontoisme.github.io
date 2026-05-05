@@ -1,0 +1,194 @@
+# Project metadata registry — used by blog publishing workflow
+# Tier 1: primary products, Tier 2: active/interesting, Tier 3: smaller/completed
+
+- name: squabble-react-native
+  repo: https://github.com/dontoisme/squabble-react-native
+  description: "Social audiobook platform with guild system, spoiler-free topics, ghost markers"
+  stack: "React Native + Expo + Firebase"
+  tier: 1
+  categories: [projects, squabble]
+  last_post:
+
+- name: agent-commerce
+  repo: https://github.com/dontoisme/agent-commerce
+  description: "CLI payment confirmation layer for AI agents — Touch ID + Stripe"
+  stack: "TypeScript + Swift"
+  tier: 1
+  categories: [projects, agent-commerce]
+  last_post:
+
+- name: cleanspace-dfw
+  repo: https://github.com/dontoisme/cleanspace-dfw
+  description: "AI-powered crawlspace and attic estimator for restoration company"
+  stack: "Next.js + Firebase"
+  tier: 1
+  categories: [projects, cleanspace-dfw]
+  last_post:
+
+- name: squabble-web
+  repo: https://github.com/dontoisme/squabble-web
+  description: "Minimal web app for timestamped audiobook notes with friends"
+  stack: "Next.js + Firebase"
+  tier: 2
+  categories: [projects, squabble]
+  last_post:
+
+- name: Squabble
+  repo: https://github.com/dontoisme/Squabble
+  description: "Original Swift iOS audiobook app — BookPlayer fork with social features"
+  stack: "Swift + Firebase"
+  tier: 2
+  categories: [projects, squabble]
+  last_post:
+
+- name: alucard
+  repo: https://github.com/dontoisme/alucard
+  description: "Player valuations dashboard with live NIL data"
+  stack: "Next.js"
+  tier: 2
+  categories: [projects, alucard]
+  last_post:
+
+- name: hogan-os
+  repo: https://github.com/dontoisme/hogan-os
+  description: "OS-like portal and dashboard — personal project showcase"
+  stack: "Next.js"
+  tier: 2
+  categories: [projects, hogan-os]
+  last_post:
+
+- name: zeroed
+  repo: https://github.com/dontoisme/zeroed
+  description: "Zero-based budgeting app"
+  stack: "Python CLI + Next.js"
+  tier: 2
+  categories: [projects, zeroed]
+  last_post:
+
+- name: co-op-claude
+  repo: https://github.com/dontoisme/co-op-claude
+  description: "Multiplayer Claude Code sessions — 2 humans + 2 AIs via file-based pub/sub"
+  stack: "Python 3.10+ (stdlib only)"
+  tier: 2
+  categories: [projects, co-op-claude]
+  last_post:
+
+- name: darwin
+  repo: https://github.com/dontoisme/darwin
+  description: "Visual regression testing tool for iOS — git-aware screenshot timelapse"
+  stack: "Bash + ImageMagick"
+  tier: 2
+  categories: [projects, darwin]
+  last_post: 2025-12-27
+
+- name: Brain
+  repo: https://github.com/dontoisme/Brain
+  description: "Second Brain Obsidian vault — PARA + MOC with specialized AI agents"
+  stack: "Obsidian + Claude Code"
+  tier: 2
+  categories: [projects, brain]
+  last_post:
+
+- name: TodoBien
+  repo: https://github.com/dontoisme/TodoBien
+  description: "PDF handling app with Safari viewer integration"
+  stack: "React"
+  tier: 3
+  categories: [projects, todobien]
+  last_post:
+
+- name: job-journal
+  repo: https://github.com/dontoisme/job-journal
+  description: "Job search pipeline with scoring system and application tracking"
+  stack: "Python"
+  tier: 3
+  categories: [projects, job-journal]
+  last_post:
+
+- name: carsandbids-analyzer
+  repo: https://github.com/dontoisme/carsandbids-analyzer
+  description: "Cars & Bids auction scraper and market analyzer"
+  stack: "Python"
+  tier: 3
+  categories: [projects, carsandbids-analyzer]
+  last_post:
+
+- name: nil-valuation
+  repo: https://github.com/dontoisme/nil-valuation
+  description: "Player valuation API — feeds alucard dashboard"
+  stack: "Python"
+  tier: 3
+  categories: [projects, nil-valuation]
+  last_post:
+
+- name: GQL
+  repo: https://github.com/dontoisme/GQL
+  description: "GraphQL project"
+  stack: "Python"
+  tier: 3
+  categories: [technical, graphql]
+  last_post:
+
+- name: jj-interview-coach-skill
+  repo: https://github.com/dontoisme/jj-interview-coach-skill
+  description: "Interview coach with recording and transcription pipeline"
+  stack: "Mixed"
+  tier: 3
+  categories: [projects, jj-interview-coach-skill]
+  last_post:
+
+- name: awesome-powered-by-claude-code
+  repo: https://github.com/dontoisme/awesome-powered-by-claude-code
+  description: "Curated awesome list of projects built with Claude Code"
+  stack: "Markdown"
+  tier: 3
+  categories: [projects, awesome-claude-code]
+  last_post:
+
+- name: Gmail Quick Filter
+  repo: https://github.com/dontoisme/Gmail-Quick-Filter
+  description: "Chrome extension for in-email Gmail filtering"
+  stack: "Chrome Extension (JS)"
+  tier: 3
+  categories: [projects, gmail-quick-filter]
+  last_post:
+
+- name: PythonWeb
+  repo: https://github.com/dontoisme/PythonWeb
+  description: "Chrome bookmark exporter"
+  stack: "Python"
+  tier: 3
+  categories: [projects, pythonweb]
+  last_post:
+
+- name: second-brain-obsidian
+  repo: https://github.com/dontoisme/second-brain-obsidian
+  description: "Second Brain template for Obsidian"
+  stack: "Obsidian"
+  tier: 3
+  categories: [projects, second-brain-obsidian]
+  last_post:
+
+- name: homebrew-darwin
+  repo: https://github.com/dontoisme/homebrew-darwin
+  description: "Homebrew tap for Darwin installation"
+  stack: "Ruby (Homebrew formula)"
+  tier: 3
+  categories: [projects, darwin]
+  last_post:
+
+- name: Bonterra-Exercise
+  repo: https://github.com/dontoisme/Bonterra-Exercise
+  description: "Bonterra design exercise — CSS animations and UI showcase"
+  stack: "CSS/HTML"
+  tier: 3
+  categories: [projects, bonterra-exercise]
+  last_post:
+
+- name: DinoCodex
+  repo: https://github.com/dontoisme/DinoCodex
+  description: "50-commit milestone exercise project"
+  stack: "Mixed"
+  tier: 3
+  categories: [projects, dinocodex]
+  last_post:

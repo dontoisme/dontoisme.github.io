@@ -16,3 +16,6 @@ plugins:
 exclude:
   - README.md
   - LICENSE
+  - _voice-guide.md
+  - CLAUDE.md
+  - .claude/
