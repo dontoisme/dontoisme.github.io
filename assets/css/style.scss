@@ -61,31 +61,28 @@ hr {
 }
 
 // Dual-voice: Claude's blockquotes in posts
-// Tangerine background, no italics, readable as a collaborator's voice
-.post-content > blockquote,
-.post-content blockquote {
+// Override Minima's base blockquote rule directly
+blockquote {
   border-left: 4px solid #e8772e !important;
   background: #fff3e6 !important;
-  margin: 1.5rem 0 !important;
   padding: 1rem 1.25rem !important;
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 6px 6px 0 !important;
   font-style: normal !important;
   color: #333 !important;
   font-size: inherit !important;
   letter-spacing: normal !important;
+  margin: 1.5rem 0 !important;
 
-  p,
-  em,
-  strong em,
-  em strong {
+  &, p, em, strong, span {
     font-style: normal !important;
     color: #333 !important;
-    line-height: 1.65;
+    letter-spacing: normal !important;
   }
 
   p {
     margin-bottom: 0.6rem;
     font-size: 0.95em;
+    line-height: 1.65;
 
     &:last-child {
       margin-bottom: 0;
@@ -94,21 +91,20 @@ hr {
 
   strong {
     color: #c45d1a !important;
-    font-style: normal !important;
   }
 
   code {
-    background: #fce4cc;
-    color: #8b4513;
+    background: #fce4cc !important;
+    color: #8b4513 !important;
   }
 
   pre {
-    background: #3d2b1f;
+    background: #3d2b1f !important;
     border-radius: 4px;
 
     code {
-      background: none;
-      color: #f0dcc8;
+      background: none !important;
+      color: #f0dcc8 !important;
     }
   }
 }
