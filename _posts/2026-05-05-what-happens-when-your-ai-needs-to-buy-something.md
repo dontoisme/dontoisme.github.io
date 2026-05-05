@@ -100,6 +100,27 @@ There's a bigger question underneath all of this: should AI agents be able to sp
 
 ---
 
-If you're thinking about agent capabilities and commerce, the research docs alone might be worth your time. 7 protocol analyses, compliance frameworks, and a working prototype.
+## Try It Yourself
+
+If you're using Claude Code (or any AI assistant that can run terminal commands), paste this prompt:
+
+```
+Clone and set up agent-commerce from https://github.com/dontoisme/agent-commerce
+
+It's a CLI payment confirmation layer that uses Touch ID. After cloning:
+
+1. Run: pnpm install && pnpm build && pnpm build:confirm
+2. Add a test card: pnpm dev -- vault add --test-card
+3. Run the demo: pnpm dev -- demo linear
+
+The demo is a dry run — no real payments, no API keys needed.
+It will trigger a Touch ID prompt to confirm an $8/mo payment to Linear.
+
+Requires: macOS with Touch ID, Node.js 20+, pnpm
+```
+
+No Stripe key needed for the demo. The `demo` command runs the full 8-step flow in dry-run mode — service discovery, Touch ID confirmation, simulated payment, credential delivery, and MCP config. You'll see exactly what a real agent-initiated purchase looks like, minus the actual charge.
+
+If you want to go deeper, the `research/` directory has 6 deep-dive documents covering every active agent commerce protocol, PCI compliance, and why this gap exists.
 
 [GitHub](https://github.com/dontoisme/agent-commerce)
