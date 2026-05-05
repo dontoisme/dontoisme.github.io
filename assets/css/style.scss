@@ -62,22 +62,30 @@ hr {
 
 // Dual-voice: Claude's blockquotes in posts
 // Tangerine background, no italics, readable as a collaborator's voice
+.post-content > blockquote,
 .post-content blockquote {
-  border-left: 4px solid #e8772e;
-  background: #fff3e6;
-  margin: 1.5rem 0;
-  padding: 1rem 1.25rem;
+  border-left: 4px solid #e8772e !important;
+  background: #fff3e6 !important;
+  margin: 1.5rem 0 !important;
+  padding: 1rem 1.25rem !important;
   border-radius: 0 6px 6px 0;
-  font-style: normal;
-  color: #333;
-  position: relative;
-  letter-spacing: 0;
+  font-style: normal !important;
+  color: #333 !important;
+  font-size: inherit !important;
+  letter-spacing: normal !important;
+
+  p,
+  em,
+  strong em,
+  em strong {
+    font-style: normal !important;
+    color: #333 !important;
+    line-height: 1.65;
+  }
 
   p {
     margin-bottom: 0.6rem;
     font-size: 0.95em;
-    line-height: 1.65;
-    font-style: normal;
 
     &:last-child {
       margin-bottom: 0;
@@ -85,7 +93,8 @@ hr {
   }
 
   strong {
-    color: #c45d1a;
+    color: #c45d1a !important;
+    font-style: normal !important;
   }
 
   code {
