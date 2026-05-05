@@ -29,21 +29,34 @@ Read these files from the project directory (`~/Projects/{project}/`):
 - List existing posts: `ls ~/Documents/GitHub/dontoisme.github.io/_posts/` — check for posts about this project
 - Read `~/Projects/Brain/Projects/blog-ideas.md` — find pre-planned ideas matching this project
 
-### 3. Read the Voice Guide
+### 3. Interview Don
+
+Before writing anything, conduct a short interactive interview (3-5 questions). The goal is to capture Don's actual perspective in his own words. These answers become the raw material for Don's sections in the dual-voice format.
+
+Ask about:
+- **Why** he built this — the moment or frustration that sparked it
+- **What surprised him** during the build — something he didn't expect
+- **Who it's for** — and who it's NOT for
+- **What he'd tell someone** considering the same problem
+- **What's unfinished** — honest assessment of where it stands
+
+Use Don's actual phrasing in the draft. Don's voice sections should feel like him talking, not Claude summarizing him.
+
+### 4. Read the Voice Guide
 
 Read `~/Documents/GitHub/dontoisme.github.io/_voice-guide.md` — follow it precisely.
 
 Also read at least one reference post for voice calibration:
 - `~/Documents/GitHub/dontoisme.github.io/_posts/2025-12-27-darwin-your-ais-eyes-on-the-build.md`
 
-### 4. Choose the Post Type
+### 5. Choose the Post Type
 
 - **First post about this project** → "Project intro" format: what is it, why I built it, how it works, what's next. Categories: `[projects, {name}]`
 - **Project already has a post** → "Build log" format: what changed, why it matters, what's next. Categories: `[build-log, {name}]`
 - **Pre-planned idea from blog-ideas.md** → Use that idea as the spine, pick appropriate categories
 - **Technical deep-dive angle** → If the project has an interesting technical decision worth exploring. Categories: `[technical, {topic}]`
 
-### 5. Write the Draft
+### 6. Write the Draft
 
 Write the draft to: `~/Documents/GitHub/dontoisme.github.io/_drafts/{slug}.md`
 
@@ -68,7 +81,7 @@ description: "One-line SEO/social description"
 ---
 ```
 
-### 6. Present the Draft
+### 7. Present the Draft
 
 After writing the file, show Don:
 - The title
