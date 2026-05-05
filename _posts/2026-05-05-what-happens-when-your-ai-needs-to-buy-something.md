@@ -26,6 +26,27 @@ Nobody's solved this for CLI agents. Browser-based agents can click "Buy" button
 
 > The architecture is deliberately minimal. Three existing systems, connected:
 >
+> ```
+> ┌──────────────────────────────────────────────┐
+> │                 CLI Agent                     │
+> │  (Claude Code, Copilot CLI, Codex)            │
+> │  → calls: agent-pay confirm linear $8/mo      │
+> └──────────────────┬───────────────────────────┘
+>                    ▼
+> ┌──────────────────────────────────────────────┐
+> │              agent-pay CLI                    │
+> │  ┌────────┐ ┌─────────┐ ┌─────┐ ┌────────┐  │
+> │  │Registry│ │Confirmer│ │Vault│ │Adapters│  │
+> │  │discover│ │Touch ID │ │Keys │ │Stripe  │  │
+> │  └────────┘ └─────────┘ └─────┘ └────────┘  │
+> └──────────┬──────────────────┬────────────────┘
+>            ▼                  ▼
+> ┌──────────────────┐ ┌───────────────────┐
+> │  macOS Keychain  │ │    Stripe API     │
+> │  (local storage) │ │ (payment processing)│
+> └──────────────────┘ └───────────────────┘
+> ```
+>
 > 1. **macOS Touch ID** — Biometric proof-of-authorization. The user sees exactly what they're approving (service, amount, card) before pressing their finger.
 > 2. **Stripe payment tokens** — The CLI never touches card numbers. It stores tokenized references (`pm_...`) in macOS Keychain and creates Shared Payment Tokens that expire in 5 minutes.
 > 3. **MCP registry** — Service discovery. When an agent needs Linear, it queries the registry for pricing, signs up, and receives an API key.
@@ -44,6 +65,10 @@ Nobody's solved this for CLI agents. Browser-based agents can click "Buy" button
 > ```
 >
 > The Swift binary that handles Touch ID is about 80 lines. The Node.js CLI is commander-based with 5 commands. The entire prototype — discovery, confirmation, vault, payment processing — compiles clean and runs the demo flow end to end.
+>
+> Here's the actual demo output — all 8 steps, ~10 seconds, zero browser:
+>
+> ![agent-commerce demo flow showing 8-step payment confirmation with Touch ID](/assets/images/agent-commerce-demo-flow.png)
 
 ## Why Touch ID Matters (Don)
 
