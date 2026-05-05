@@ -8,6 +8,7 @@ github_username: dontoisme
 linkedin_username: donhogan
 
 # Build settings
+future: true
 theme: minima
 plugins:
   - jekyll-seo-tag
