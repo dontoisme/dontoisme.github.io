@@ -7,46 +7,48 @@ title: Home
 
 **Technical Product Manager** — I turn complex iOS and AI engineering into shipped products.
 
-I bridge technical teams and business goals with a builder's mindset. I've designed developer tools, built AI-assisted workflows, and written the code to back it up.
+I bridge technical teams and business goals with a builder's mindset. I've designed developer tools, built AI-assisted workflows, and written the code to back it up. I also write about it here — [with a little help](/technical/ai-workflow/2026/05/05/how-we-built-an-ai-blog-that-actually-ships.html).
 
 ---
 
 ## Projects
 
+### [Squabble Inn](https://github.com/dontoisme/squabble-react-native)
+**Social audiobook platform with guild system**
+*Built:* React Native + Expo app with real-time progress sync, spoiler-free topics, ghost markers
+*Impact:* Social layer for audiobook listeners — guilds, achievements, timestamped notes that reveal as friends listen
+[Web companion](https://github.com/dontoisme/squabble-web) | [Original iOS app](https://github.com/dontoisme/Squabble)
+
+### [Agent Commerce](https://github.com/dontoisme/agent-commerce)
+**Payment confirmation for AI agents**
+*Built:* CLI-native transaction layer — Touch ID + Stripe for autonomous agent purchases
+*Impact:* Lets AI agents spend money with human-in-the-loop biometric confirmation
+
 ### [Darwin](https://github.com/dontoisme/darwin)
 **Visual regression testing for iOS + AI workflows**
-*Built:* Git-aware screenshot capture, interactive timeline viewer, pixel-level diffs
+*Built:* Git-aware screenshot capture, interactive timeline viewer, pixel-level diffs — ~8,500 lines of bash
 *Impact:* Catches UI regressions before PR merge — gives AI assistants "eyes" on the build
-[Read the blog post](/ios/tools/ai/2025/12/27/darwin-your-ais-eyes-on-the-build.html) | [Prompt to Install](/ai/developer-tools/ux/2025/12/27/prompt-to-install-the-new-developer-tool-ux.html)
+[Blog post](/ios/tools/ai/2025/12/27/darwin-your-ais-eyes-on-the-build.html) | [Prompt to Install](/ai/developer-tools/ux/2025/12/27/prompt-to-install-the-new-developer-tool-ux.html)
 
-### [Awesome Powered by Claude Code](https://github.com/dontoisme/awesome-powered-by-claude-code)
-**Curated list of apps designed for Claude Code as runtime**
-*Built:* Community resource for the emerging "Claude Code as interface" pattern
-*Impact:* Documenting a new category of AI-native applications
+### [Co-op Claude](https://github.com/dontoisme/co-op-claude)
+**Multiplayer Claude Code sessions**
+*Built:* 2 humans + 2 AIs via file-based pub/sub bus — Python stdlib only, zero dependencies
+*Impact:* Pair programming where both sides can bring an AI partner
 
 ### [Zeroed](https://github.com/dontoisme/zeroed)
-**YNAB-style zero-based budgeting app**
+**Zero-based budgeting app**
 *Built:* Python CLI + Next.js dashboard for envelope budgeting
 *Impact:* Personal finance tool with clean separation of CLI and web interfaces
 
-### [Squabble](https://github.com/dontoisme/Squabble) + [Squabble Web](https://github.com/dontoisme/squabble-web)
-**DRM-free audiobook player with social features**
-*Built:* iOS player (fork) + web companion for hidden timestamped notes
-*Impact:* Leave messages that reveal as friends listen — social layer for audiobooks
+### [Awesome Powered by Claude Code](https://github.com/dontoisme/awesome-powered-by-claude-code)
+**Curated list of apps built with Claude Code**
+*Built:* Community resource for the emerging "Claude Code as interface" pattern
+*Impact:* Documenting a new category of AI-native applications
 
-### [Job Journal](https://github.com/dontoisme/jobjournal)
-**Job search tracking and management**
-*Built:* Application tracker for organizing the job hunt
-*Impact:* Stay organized across applications, interviews, and follow-ups
-
-### [Gmail Quick Filter](https://github.com/dontoisme/Gmail-Quick-Filter)
-**Chrome extension for faster email triage**
-*Built:* Quick filter button + keyboard hotkey for Gmail
-*Impact:* Streamlines daily email workflow with one-click filtering
-
-### [Ark B Writings](/ark-b-writings/)
-**My blog on technology and product management**
-Recent: AI-assisted development, developer tool UX, building in public
+### More
+[Job Journal](https://github.com/dontoisme/job-journal) — Job search pipeline with scoring |
+[Gmail Quick Filter](https://github.com/dontoisme/Gmail-Quick-Filter) — Chrome extension for email triage |
+[Alucard](https://github.com/dontoisme/alucard) — Player valuations dashboard
 
 ---
 
