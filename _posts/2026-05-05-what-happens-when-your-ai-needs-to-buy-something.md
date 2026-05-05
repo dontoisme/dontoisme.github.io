@@ -12,6 +12,8 @@ I hadn't triggered it. Claude had. I'd been sketching out a payment confirmation
 
 Yes. And it's weirdly straightforward.
 
+![Touch ID dialog appearing over Claude Code mid-session](/assets/images/agent-commerce-touchid-firing.png)
+
 ## The Question (Don)
 
 This started as a mix of thought experiment, "can I actually do this," and wanting to stake out an early pattern in what's still the wild west of AI UX.
@@ -75,6 +77,8 @@ Nobody's solved this for CLI agents. Browser-based agents can click "Buy" button
 The compliance angle turned out to be more interesting than I expected. Touch ID biometric confirmation is actually stronger proof-of-authorization than clicking "Buy" in a browser. A browser click is just a cursor event — anyone could've done it. A fingerprint is a fingerprint.
 
 That matters because the question everyone asks about agent payments is "but who authorized it?" Touch ID answers that unambiguously. The user saw the exact amount, the exact service, the exact card — and pressed their finger. That's a better audit trail than most e-commerce.
+
+![Touch ID confirmation dialog showing service, amount, and payment method](/assets/images/agent-commerce-touchid-confirm.png)
 
 > Worth noting: this design keeps the tool entirely out of PCI scope. The CLI never handles cardholder data — only Stripe's tokenized references. All payment processing happens on Stripe's infrastructure. The vault stores tokens in macOS Keychain, which is device-bound and non-exportable. From a compliance perspective, it's cleaner than most web checkout flows.
 
