@@ -61,21 +61,23 @@ hr {
 }
 
 // Dual-voice: Claude's blockquotes in posts
-// Renders as a distinct but integrated collaborator voice
+// Tangerine background, no italics, readable as a collaborator's voice
 .post-content blockquote {
-  border-left: 3px solid #7c5cbf;
-  background: #f8f6fb;
+  border-left: 4px solid #e8772e;
+  background: #fff3e6;
   margin: 1.5rem 0;
   padding: 1rem 1.25rem;
   border-radius: 0 6px 6px 0;
   font-style: normal;
-  color: #3a3a4a;
+  color: #333;
   position: relative;
+  letter-spacing: 0;
 
   p {
     margin-bottom: 0.6rem;
     font-size: 0.95em;
     line-height: 1.65;
+    font-style: normal;
 
     &:last-child {
       margin-bottom: 0;
@@ -83,21 +85,21 @@ hr {
   }
 
   strong {
-    color: #5a3d8a;
+    color: #c45d1a;
   }
 
   code {
-    background: #efe9f7;
-    color: #4a3570;
+    background: #fce4cc;
+    color: #8b4513;
   }
 
   pre {
-    background: #2d2040;
+    background: #3d2b1f;
     border-radius: 4px;
 
     code {
       background: none;
-      color: #e0d6f0;
+      color: #f0dcc8;
     }
   }
 }

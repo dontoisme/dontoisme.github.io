@@ -19,4 +19,5 @@ exclude:
   - LICENSE
   - _voice-guide.md
   - CLAUDE.md
+  - AGENTS.md
   - .claude/
