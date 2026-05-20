@@ -167,7 +167,7 @@
   stack: "Obsidian"
   tier: 3
   categories: [projects, second-brain-obsidian]
-  last_post:
+  last_post: 2026-05-19
 
 - name: homebrew-darwin
   repo: https://github.com/dontoisme/homebrew-darwin
