@@ -40,6 +40,45 @@ Reference for AI-generated blog posts. Derived from published posts on dontoisme
 - Generic conclusions ("In conclusion, X is important")
 - Corporate voice or third-person framing
 
+## Dual-Voice Format (Don + Claude)
+
+The blog's signature format. Don and Claude co-author the post, each with a distinct voice and role. The reader sees a real collaboration, not Claude ghostwriting for Don.
+
+### Voice Roles
+
+- **Don** — handles the why, the opinions, the frustrations, the judgment calls. First-person, builder's perspective. Sections are unquoted prose.
+- **Claude** — handles the how, the technical details, the system-level observations. Sections use `>` blockquotes throughout. Claude speaks in first person about its own work ("I scan all 24 repos") but never pretends to be Don.
+
+### Structure
+
+1. **Hook** (Don, unlabeled) — 1-2 paragraphs. The problem or the surprising thing. No `(Don)` tag on the opening — it's obviously Don.
+2. **Claude intro** — A single `>` blockquote starting with `> **Claude here.**` Establishes Claude's role in this specific post. 2-3 sentences max.
+3. **Body sections** — Alternate between Don and Claude. Each `##` header is tagged: `## Section Title (Don)` or `## Section Title (Claude)`. Not every section needs a partner response, but the post should feel like a conversation.
+4. **Mixed sections** — A Don-labeled section can end with a Claude blockquote response (and vice versa, though less common). This works well for sections where both perspectives add something.
+5. **What's Next** — Usually Don, sometimes with a Claude blockquote adding its own take on what's next.
+6. **Closing** — Don's voice, untagged. Optional short Claude sign-off in blockquote (one line, not forced).
+
+### Formatting Rules
+
+- Don's prose: normal markdown, no blockquote
+- Claude's prose: always in `>` blockquotes
+- Section headers: `## Title (Don)` or `## Title (Claude)` — the name goes in parentheses
+- The hook and closing don't get `(Don)` tags — they're obviously Don's voice
+- Code blocks, diagrams, and command examples can appear in either voice's sections
+- Aim for roughly 60/40 Don/Claude split — Don drives the narrative
+
+### When to Use Dual-Voice
+
+- **Always** for project intros and build logs — these are collaborations by nature
+- **Optional** for technical deep-dives — use it when Claude's implementation perspective adds something; skip it for posts that are purely Don's reflection
+- **Never** force it — if a post reads better as single-voice Don, write it that way
+
+### Reference Posts
+
+For dual-voice calibration, read these:
+- `_posts/2026-05-05-how-we-built-an-ai-blog-that-actually-ships.md` (the original dual-voice post)
+- `_posts/2026-05-05-what-happens-when-your-ai-needs-to-buy-something.md` (more technical, tighter Claude sections)
+
 ## Post Types
 
 ### Project intro (first post about a project)

@@ -31,7 +31,7 @@ Read these files from the project directory (`~/Projects/{project}/`):
 
 ### 3. Interview Don
 
-Before writing anything, conduct a short interactive interview (3-5 questions). The goal is to capture Don's actual perspective in his own words. These answers become the raw material for Don's sections in the dual-voice format.
+Before writing anything, conduct a short interactive interview (3-5 questions). The goal is to capture Don's actual perspective in his own words. These answers become the raw material for Don's sections in the dual-voice format (see "Dual-Voice Format" section in `_voice-guide.md`).
 
 Ask about:
 - **Why** he built this — the moment or frustration that sparked it
@@ -62,13 +62,15 @@ Write the draft to: `~/Documents/GitHub/dontoisme.github.io/_drafts/{slug}.md`
 
 Use kebab-case for the slug (e.g., `building-a-payment-layer-for-ai-agents.md`). Do NOT include a date prefix — Jekyll adds dates when drafts move to `_posts/`.
 
-Follow this structure from the voice guide:
-1. **Hook** (1-2 paragraphs): The problem or the surprising thing
-2. **Context** (1-2 paragraphs): What I was building, why it matters
-3. **How it works** (3-5 sections with headers): Technical specifics, real code/commands
-4. **What I learned** (1-2 paragraphs): Broader takeaway
-5. **What's next** (short): Honest roadmap or open questions
-6. **Closing**: Links to repo, install command, or next step
+Use the **dual-voice format** defined in `_voice-guide.md` under "Dual-Voice Format (Don + Claude)":
+1. **Hook** (Don, unlabeled): The problem or the surprising thing
+2. **Claude intro** (`> **Claude here.**`): Establish Claude's role in this post
+3. **Body sections** (alternating `(Don)` / `(Claude)` headers): Don handles why/opinions, Claude handles how/technical — Claude sections always in `>` blockquotes
+4. **What I learned** (Don): Broader takeaway or reflection
+5. **What's next** (Don, with optional Claude blockquote): Honest roadmap
+6. **Closing** (Don, untagged): Links to repo, install command, or next step
+
+Aim for ~60/40 Don/Claude split. Don drives the narrative. Claude adds technical depth and its own observations.
 
 Frontmatter:
 ```yaml
@@ -101,3 +103,7 @@ Before presenting, verify:
 - [ ] 800-1200 words
 - [ ] Has a closing CTA with repo link
 - [ ] Frontmatter is complete and correct
+- [ ] Dual-voice format: Claude intro blockquote present (`> **Claude here.**`)
+- [ ] Dual-voice format: section headers tagged `(Don)` or `(Claude)`
+- [ ] Dual-voice format: all Claude prose in `>` blockquotes
+- [ ] Dual-voice format: ~60/40 Don/Claude split
