@@ -3,63 +3,70 @@ layout: post
 title: "Less Friction, Not More Slop: Job Applications With AI"
 date: 2026-06-15 16:00:00 -0600
 categories: [build-log, job-journal]
-description: "The easy version of AI job hunting is mass-applying with generic resumes. I built the opposite: AI that removes the tedium so each application is higher-quality, well-researched, and still mine to submit."
+description: "The easy version of AI job hunting is mass-applying with generic resumes. I built the opposite: a multi-agent pipeline that sources, scores, researches, and fills out applications — with the human in the loop on every irreversible step."
 ---
 
-There's a dark version of "AI for job hunting," and we all know what it looks like: one button, five hundred applications, a generic resume sprayed at every req that matches a keyword. Recruiters are already drowning in it. It's slop, and it doesn't work — it just makes the inbox worse for everyone.
+There's a dark version of "AI for job hunting": one button, five hundred applications, a generic resume sprayed at every req that matches a keyword. Recruiters are drowning in it. It's slop, and it doesn't work.
 
-I went the other direction. I've spent this week teaching Job-Journal, my open-source job-search CLI, to remove the *friction* in applying — the tedious parts — so that every application I send is more tailored, better researched, and higher quality. Not more applications. Better ones.
+I built the opposite. This week I turned Job-Journal, my open-source job-search CLI, into a pipeline that removes the *tedium* of applying — sourcing, scoring, research, form-filling — so every application is more tailored and better-researched. Not more applications. Better ones, with me on every judgment call.
 
-The distinction matters to me, so I built the whole thing around it: the machine does the grunt work, I keep the judgment, and a human still writes the truth and clicks submit.
+And because I'm job hunting as a product manager whose resume claims I "design agentic work management with task routing, agent handoffs, persistent context, and human-in-the-loop escalation" — I figured I'd build one and let the architecture be the receipt.
 
-> **Claude here.** Don and I rebuilt the front half of this pipeline this week. I'll cover the machinery, but the design constraint underneath all of it was the same: never make it easy to spam. Every shortcut I added had a guardrail attached.
+> **Claude here.** Last time I wrote about this project I kept it high-level. Don asked me to go deeper on the architecture this round, partly because the system genuinely demonstrates the AI-product patterns on his resume. So this one's more technical. I'll show the agent topology and where the guardrails live.
 
-## Quality starts with focus, not volume (Don)
+## The architecture: specialized agents, not one mega-prompt (Claude)
 
-The first decision was to apply to *fewer* companies, deliberately. I narrowed the search to a tier of senior, high-comp product roles — MANGO and a top-200 list — after a coaching conversation convinced me to stop hedging.
-
-That's the opposite of spray-and-pray. A tight target list means I can afford to do real homework on each one. You can't research five hundred companies. You can research fifteen.
-
-## Resumes that can't lie (Don)
-
-This is the part I refuse to compromise on. Every resume Job-Journal generates pulls its bullets *verbatim* from a corpus of things I've actually done. The rule is "select, don't compose" — the AI can reorder, filter, and reposition, but it cannot invent a metric or a role.
-
-There's a code-level integrity audit that blocks export if anything slips: a bullet that isn't in the corpus, a fabricated company, even an em-dash. If the resume doesn't pass, it doesn't generate. That gate is the whole reason I trust the output enough to send it.
-
-> The audit is a hard gate, not a suggestion. It checks for non-corpus bullets, duplicate companies, missing sections, and formatting tells. Most "AI resume" tools optimize for sounding impressive; this one optimizes for being true. Repositioning Don's real experience for a specific role is fair game. Inventing experience is a build failure.
-
-This week I also rebuilt my four "archetype" resumes — growth, AI/agentic, health-tech, general — around my current work and repositioned the summaries for senior roles. Same corpus, sharper framing.
-
-## Finding real, open roles (Claude)
-
-> Job-Journal scans Greenhouse, Lever, and Ashby, but the companies Don is targeting mostly don't use those. So I built a small adapter framework for custom career platforms — Amazon's `search.json` (US-only, senior titles) and Netflix's Eightfold API landed cleanly; Google and Meta we deferred because they need browser scraping.
+> The pipeline is a chain of narrow, single-purpose agents, each spawned headless and handing off through shared state. Nothing is one giant prompt.
 >
-> The anti-slop detail here is the freshness filter. The first role the system surfaced was a perfect-on-paper match — that had closed a month ago. Applying to dead reqs is its own kind of noise, so now nothing older than a month counts as apply-ready. Real, open roles only.
-
-## Doing the homework, with receipts (Don)
-
-Before I apply to something worth applying to, a sub-agent researches two things: what's creating demand for this role at this company right now, and why I'm genuinely worth a conversation. Every claim it makes is cited.
-
-For an OpenAI growth role it surfaced sourced facts — business users past nine million, enterprise revenue heading toward parity with consumer — and tied each one to real work on my resume. That's not a shortcut around effort. That's effort I'd want to do anyway, done faster and better organized.
-
-> The brief is paranoid by design. Every company claim carries a dated source URL or gets explicitly labeled as inference. Nothing about Don is invented — the "why me" has to trace to his corpus. A confidently wrong fact on a senior application is worse than no application. So the rule is: cited, or it doesn't ship.
-
-## Filling the form, never hitting submit (Claude)
-
-> Here's the line that keeps this on the right side of slop. When a match is strong, Job-Journal fills the tedious ATS fields in Don's own browser — name, contact, work authorization, location — and drafts the "why us" answer from the cited research brief.
+> ```
+> scan-apis      → discovers net-new jobs (no LLM, pure Python adapters)
+> scorer         → headless `claude -p` fit-score vs corpus, links a resume
+> research-brief → sub-agent: cited "why now / why me" web research
+> apply-assist   → MCP browser agent: fills the ATS form, stops at submit
+> ```
 >
-> It does not click Submit. Ever. Salary, the legal attestations, and the EEO questions are Don's. It fills one application at a time, never a batch, and hands him a finished form to read top to bottom.
+> Orchestration is plain Python spawning `claude -p` subprocesses — the Slack bot, the scoring pass, and the brief generator each shell out to isolated agent runs with `--allowedTools` scoping each one's blast radius. **Task routing** is the selection logic: a fit score routes a prospect into the apply-ready lane (≥80 + target company), a net-new cutoff keeps scoring off the backlog, a freshness filter drops anything older than a month. **Persistent context** is a 16-table SQLite store — every agent reads and writes the same prospect records, so a score from one run feeds the brief in the next.
 >
-> We tested it on a real OpenAI posting. It filled cleanly and stopped at the button. Don read it, adjusted, and submitted it himself.
+> Some of it is genuinely multi-agent. I built one whole feature this session — the apply-ready chain — as a *background* agent working on its own git branch, opening a PR for Don to review while I kept going in the foreground. Another background agent full-scored eight Amazon roles in parallel. Agents handing off to agents, with a human merging.
 
-## The restraint is the product (Don)
+## Structured outputs over vibes (Claude)
 
-Here's what I keep coming back to: AI makes slop *trivial*. The one-click-five-hundred-applications version is the easy build. Anyone can ship it in a weekend.
+> The research sub-agent doesn't hand me prose to parse — it returns a validated structure: demand drivers with dated source URLs, connection points traced to the corpus, a summary angle, a ready why-us answer. Cited or labeled-as-inference, every time. That constraint is what makes the output safe to put on an application instead of just impressive-sounding.
 
-The valuable version is the disciplined one — the one that does the boring 90% (sourcing, scoring, the same fifteen form fields) so I can spend my actual attention on the 10% that should be human: is this role worth it, is the framing honest, and do I stand behind what I'm about to send.
+## MCP, doing real work in a real browser (Claude)
 
-Friction went down. Quality went up. Volume stayed flat on purpose. That's the trade I wanted.
+> `apply-assist` is the part that reads most like the resume's "MCP workflows" line. It drives Don's actual Chrome through an MCP server: reads the accessibility tree, fills React comboboxes (which need click → type → wait → select, because setting the value doesn't commit it), commits a location typeahead, handles Amazon's hidden-`<select>`-behind-a-custom-widget pattern, and walks a multi-step authenticated portal.
+>
+> We ran it live on a real OpenAI posting and a real Amazon one. It filled both — and hit the honest walls: a file upload that refuses host paths, and Amazon's account login, which is exactly where it should stop.
 
-Job-Journal is open source: [github.com/dontoisme/job-journal](https://github.com/dontoisme/job-journal).
+## Human-in-the-loop escalation is the design, not an afterthought (Don)
 
-> The seams are still rough — a browser file picker I can't see, two ATSes I can't scrape yet. But "AI removes tedium, human keeps judgment and submits" is the division of labor I'd defend. It's the difference between applying to more jobs and applying to the right ones, well.
+Here's the part I'd defend in an interview. The system does the boring 90% and *escalates* the 10% that has to be human:
+
+- It never clicks Submit. Ever.
+- Salary, EEO, and legal attestations are mine.
+- Account logins? It hands off — it does not authenticate as me.
+- Research that isn't sourced doesn't ship.
+- A stale or closed posting gets filtered before it wastes a cycle.
+
+That's task routing, agent handoffs, persistent context, and human-in-the-loop escalation paths — which is, almost word for word, a bullet on my resume. I caught myself building the thing I claim to be good at, which is either on-the-nose or exactly the point.
+
+## Quality starts upstream, too (Don)
+
+The anti-slop discipline isn't just the submit button. Every resume pulls bullets *verbatim* from a corpus of real work — "select, don't compose." A code-level integrity audit blocks export on a non-corpus bullet, a fabricated company, even an em-dash. The AI repositions; it cannot invent.
+
+> The audit is a hard gate, not a suggestion. Most "AI resume" tools optimize for sounding impressive. This one fails the build if a bullet can't be traced to something Don actually did.
+
+## What broke, honestly (Don)
+
+The first role the system surfaced had closed a month earlier — so I added a freshness rule and a live-URL check. The browser couldn't attach a resume from a host path, so I attach it myself. Amazon walled the application behind a login, so I logged in and handed the form back to the agent.
+
+That's the real texture of building with agents: the demo works, then reality hands you a closed req, a file picker you can't see, and an auth wall. The value is in the seams you harden, not the happy path.
+
+## What this changed (Don)
+
+Friction down, quality up, volume flat on purpose. Two applications went out this week — both well-fit, well-researched, and read top-to-bottom by me before they went anywhere.
+
+Job-Journal is open source: [github.com/dontoisme/job-journal](https://github.com/dontoisme/job-journal). The agent orchestration and the apply-flow skills are the interesting part.
+
+> The seams are still rough. But "specialized agents do the tedium, the human keeps judgment and the irreversible clicks" is an architecture I'd ship to production — and it's the difference between applying to more jobs and applying to the right ones, well.
