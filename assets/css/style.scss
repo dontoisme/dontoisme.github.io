@@ -3,6 +3,277 @@
 
 @import "minima";
 
+// =====================================================================
+//  Landing page — "Working in public"
+//  Light editorial page; the dark build-log panel is the one bold moment.
+// =====================================================================
+
+.home-landing {
+  --paper:      #fbfaf7;
+  --ink:        #1b1a18;
+  --accent:     #e8772e;
+  --accent-deep:#c45d1a;
+  --muted:      #6b6b66;
+  --hairline:   #e8e5de;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  max-width: 760px;
+  margin: 0 auto;
+
+  // neutralise Minima's global heading rules inside the landing
+  h1, h2, h3 { border: none; padding: 0; margin: 0; }
+
+  // ---- Hero ----------------------------------------------------------
+  .hero { margin: 1rem 0 3rem; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin: 0 0 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 6vw, 3.1rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .hero-bio {
+    font-size: 1.06rem;
+    line-height: 1.6;
+    color: #3a3a36;
+    max-width: 38rem;
+    margin: 1.1rem 0 0;
+  }
+
+  // ---- Build log (the signature) ------------------------------------
+  .buildlog {
+    margin-top: 2rem;
+    background: var(--ink);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px -22px rgba(27,26,24,0.55);
+  }
+
+  .buildlog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+  }
+
+  .buildlog-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f0ede6;
+    letter-spacing: 0.04em;
+  }
+
+  .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(232,119,46,0.6);
+    animation: bl-pulse 2.4s ease-out infinite;
+  }
+
+  .buildlog-stat { color: #8a857c; letter-spacing: 0.02em; text-align: right; }
+
+  .buildlog-feed { list-style: none; margin: 0; padding: 0.3rem 0; }
+
+  .buildlog-row {
+    display: grid;
+    grid-template-columns: 3.2rem auto 1fr;
+    align-items: baseline;
+    gap: 0.55rem;
+    padding: 0.42rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.3;
+    border-top: 1px solid rgba(255,255,255,0.045);
+  }
+  .buildlog-row:first-child { border-top: none; }
+
+  .bl-time { color: #6f6a61; text-align: right; white-space: nowrap; }
+  .bl-verb { color: var(--accent); white-space: nowrap; }
+  .bl-repo {
+    grid-column: 3;
+    color: #e6e2da; text-decoration: none;
+    border-bottom: 1px solid transparent;
+    justify-self: start;
+  }
+  .bl-repo:hover { border-bottom-color: rgba(230,226,218,0.5); }
+  .bl-extra {
+    grid-column: 3;
+    color: #b9742f; font-size: 0.72rem;
+  }
+  .bl-detail {
+    grid-column: 3;
+    color: #948f86;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  .bl-detail a { color: #b98a5a; }
+  .buildlog-loading .bl-detail,
+  .buildlog-fallback .bl-detail { grid-column: 1 / -1; }
+
+  // ---- Section scaffolding ------------------------------------------
+  .section { margin: 3.2rem 0; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.7rem;
+    margin-bottom: 1.3rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  .section-more {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .section-more:hover { color: var(--accent-deep); }
+
+  // ---- Writing cards -------------------------------------------------
+  .post-grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+  .post-card a {
+    display: flex; flex-direction: column;
+    height: 100%;
+    padding: 1.05rem 1.1rem;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .post-card a:hover {
+    border-color: #d9c4ad;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -18px rgba(27,26,24,0.4);
+  }
+  .pc-meta {
+    font-family: var(--font-mono);
+    font-size: 0.68rem; letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 0.5rem;
+  }
+  .pc-title {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 1.02rem; line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .pc-excerpt { font-size: 0.86rem; line-height: 1.5; color: var(--muted); }
+
+  // ---- Project cards -------------------------------------------------
+  .project-grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+  .project-card {
+    display: flex; flex-direction: column;
+    padding: 1.05rem 1.1rem;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    transition: border-color 0.18s ease;
+  }
+  .project-card.is-active { border-color: rgba(232,119,46,0.45); }
+
+  .pj-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+  .pj-name {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 0.98rem;
+    color: var(--ink);
+  }
+  .pj-active {
+    font-family: var(--font-mono);
+    font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent-deep);
+    background: rgba(232,119,46,0.12);
+    padding: 0.12rem 0.4rem;
+    border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  .pj-active[hidden] { display: none; } // [hidden] must beat the inline-flex above
+  .pj-active::before {
+    content: ""; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .pj-desc { font-size: 0.84rem; line-height: 1.5; color: var(--muted); flex: 1 0 auto; margin: 0 0 0.8rem; }
+  .pj-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+  .pj-stack {
+    font-family: var(--font-mono);
+    font-size: 0.66rem; color: #8a857c;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .pj-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem; color: var(--accent-deep); text-decoration: none; white-space: nowrap;
+  }
+  .pj-link:hover { color: var(--accent); }
+
+  // ---- Connect -------------------------------------------------------
+  .connect { border-top: 1px solid var(--hairline); padding-top: 2rem; }
+  .connect h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--ink); margin-bottom: 0.6rem; }
+  .connect p { color: #3a3a36; }
+  .connect-links { margin-top: 0.6rem; display: flex; gap: 1.2rem; }
+  .connect-links a {
+    font-family: var(--font-mono); font-size: 0.82rem;
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+  .connect-links a:hover { color: var(--accent-deep); }
+
+  @media screen and (max-width: 600px) {
+    .post-grid, .project-grid { grid-template-columns: 1fr; }
+    .buildlog-row { grid-template-columns: 2.6rem auto 1fr; font-size: 0.74rem; }
+    .buildlog-stat { display: none; }
+  }
+}
+
+@keyframes bl-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(232,119,46,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(232,119,46,0); }
+  100% { box-shadow: 0 0 0 0 rgba(232,119,46,0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-landing .pulse { animation: none; }
+}
+
 // Lightweight UX enhancements - no external dependencies
 
 // Improved readability

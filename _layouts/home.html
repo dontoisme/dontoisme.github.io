@@ -1,0 +1,78 @@
+---
+layout: default
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="home-landing">
+
+  <section class="hero">
+    <p class="eyebrow">{{ page.eyebrow | default: "Technical Product Manager" }}</p>
+    <h1 class="hero-title">{{ page.tagline | default: "I turn complex iOS and AI engineering into shipped products." }}</h1>
+    <p class="hero-bio">{{ page.bio }}</p>
+
+    <div class="buildlog">
+      <div class="buildlog-head">
+        <span class="buildlog-label"><span class="pulse" aria-hidden="true"></span>Working in public</span>
+        <span class="buildlog-stat" data-activity-stat></span>
+      </div>
+      <ol class="buildlog-feed" data-activity-feed aria-label="Recent GitHub activity">
+        <li class="buildlog-row buildlog-loading"><span class="bl-detail">Fetching latest commits&hellip;</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Latest writing</h2>
+    </div>
+    <ul class="post-grid">
+      {% for post in site.posts %}
+      <li class="post-card">
+        <a href="{{ post.url | relative_url }}">
+          <span class="pc-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.categories[1] %} · {{ post.categories[1] }}{% endif %}</span>
+          <span class="pc-title">{{ post.title }}</span>
+          <span class="pc-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 130 }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>What I&rsquo;m building</h2>
+      <a class="section-more" href="https://github.com/dontoisme?tab=repositories">All repos &#8599;</a>
+    </div>
+    <ul class="project-grid">
+      {% for p in site.data.projects %}{% if p.tier <= 2 %}
+      <li class="project-card" data-repo="{{ p.name | downcase }}">
+        <div class="pj-top">
+          <h3 class="pj-name">{{ p.display | default: p.name }}</h3>
+          <span class="pj-active" data-active-badge hidden>active</span>
+        </div>
+        <p class="pj-desc">{{ p.description }}</p>
+        <div class="pj-foot">
+          <span class="pj-stack">{{ p.stack }}</span>
+          <a class="pj-link" href="{{ p.repo }}">Repo &#8599;</a>
+        </div>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+  </section>
+
+  <section class="section connect">
+    <h2>Let&rsquo;s build something</h2>
+    <p>Working on iOS, AI tooling, or developer experience? I&rsquo;m always up for a conversation.</p>
+    <p class="connect-links">
+      <a href="https://linkedin.com/in/donhogan">LinkedIn &#8599;</a>
+      <a href="https://github.com/dontoisme">GitHub &#8599;</a>
+    </p>
+  </section>
+
+  {{ content }}
+</div>
+
+<script src="{{ '/assets/js/activity.js' | relative_url }}" defer></script>

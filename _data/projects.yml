@@ -2,6 +2,7 @@
 # Tier 1: primary products, Tier 2: active/interesting, Tier 3: smaller/completed
 
 - name: squabble-react-native
+  display: "Squabble Inn"
   repo: https://github.com/dontoisme/squabble-react-native
   description: "Social audiobook platform with guild system, spoiler-free topics, ghost markers"
   stack: "React Native + Expo + Firebase"
@@ -10,6 +11,7 @@
   last_post:
 
 - name: agent-commerce
+  display: "Agent Commerce"
   repo: https://github.com/dontoisme/agent-commerce
   description: "CLI payment confirmation layer for AI agents — Touch ID + Stripe"
   stack: "TypeScript + Swift"
@@ -18,6 +20,7 @@
   last_post: 2026-05-05
 
 - name: cleanspace-dfw
+  display: "CleanSpace DFW"
   repo: https://github.com/dontoisme/cleanspace-dfw
   description: "AI-powered crawlspace and attic estimator for restoration company"
   stack: "Next.js + Firebase"
@@ -26,6 +29,7 @@
   last_post:
 
 - name: squabble-web
+  display: "Squabble Web"
   repo: https://github.com/dontoisme/squabble-web
   description: "Minimal web app for timestamped audiobook notes with friends"
   stack: "Next.js + Firebase"
@@ -42,6 +46,7 @@
   last_post:
 
 - name: alucard
+  display: "Alucard"
   repo: https://github.com/dontoisme/alucard
   description: "Player valuations dashboard with live NIL data"
   stack: "Next.js"
@@ -50,6 +55,7 @@
   last_post:
 
 - name: hogan-os
+  display: "Hogan OS"
   repo: https://github.com/dontoisme/hogan-os
   description: "OS-like portal and dashboard — personal project showcase"
   stack: "Next.js"
@@ -58,6 +64,7 @@
   last_post:
 
 - name: zeroed
+  display: "Zeroed"
   repo: https://github.com/dontoisme/zeroed
   description: "Zero-based budgeting app"
   stack: "Python CLI + Next.js"
@@ -66,6 +73,7 @@
   last_post:
 
 - name: co-op-claude
+  display: "Co-op Claude"
   repo: https://github.com/dontoisme/co-op-claude
   description: "Multiplayer Claude Code sessions — 2 humans + 2 AIs via file-based pub/sub"
   stack: "Python 3.10+ (stdlib only)"
@@ -74,6 +82,7 @@
   last_post:
 
 - name: darwin
+  display: "Darwin"
   repo: https://github.com/dontoisme/darwin
   description: "Visual regression testing tool for iOS — git-aware screenshot timelapse"
   stack: "Bash + ImageMagick"
@@ -82,6 +91,7 @@
   last_post: 2025-12-27
 
 - name: Brain
+  display: "Brain"
   repo: https://github.com/dontoisme/Brain
   description: "Second Brain Obsidian vault — PARA + MOC with specialized AI agents"
   stack: "Obsidian + Claude Code"
