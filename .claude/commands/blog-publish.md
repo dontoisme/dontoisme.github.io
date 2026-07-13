@@ -21,18 +21,29 @@ Show Don what files are staged/unstaged. If no new posts in `_posts/`, say: "No 
 
 List the new/modified files in `_posts/` and show their titles. Ask Don: "Publish these posts? This will push to GitHub Pages and they'll be live."
 
-### 3. Publish
+### 3. Refresh Activity Data
+
+Regenerate the landing page's private-repo activity feed so it's current at publish time:
+
+```bash
+cd ~/Documents/GitHub/dontoisme.github.io
+node scripts/update-activity.mjs
+```
+
+This scans local clones in `~/Projects` and `~/Documents/GitHub` and writes `assets/data/activity.json` (repo names + commit counts only, no messages).
+
+### 4. Publish
 
 On confirmation:
 
 ```bash
 cd ~/Documents/GitHub/dontoisme.github.io
-git add _posts/ _data/projects.yml
+git add _posts/ _data/projects.yml assets/data/activity.json
 git commit -m "Publish: {post titles, comma-separated}"
 git push origin main
 ```
 
-### 4. Update Tracking
+### 5. Update Tracking
 
 For each published post:
 
@@ -43,7 +54,7 @@ For each published post:
    ```
    Match by project name from `bd list --labels ai-blog`.
 
-### 5. Confirm Deployment
+### 6. Confirm Deployment
 
 After pushing, say:
 - "Published {N} posts. Site will update in ~1 minute at https://dontoisme.github.io"

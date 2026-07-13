@@ -116,6 +116,8 @@
     justify-self: start;
   }
   .bl-repo:hover { border-bottom-color: rgba(230,226,218,0.5); }
+  .is-local .bl-repo { cursor: default; }
+  .is-local .bl-repo:hover { border-bottom-color: transparent; }
   .bl-extra {
     grid-column: 3;
     color: #b9742f; font-size: 0.72rem;
